@@ -21,4 +21,4 @@ Zuul GateWay server + Dynamic Configuration Server
   >
   > ex) http://localhost:8080/myGateway/myProfile/myLabel =>  application : myGateway, profile : myProfile, label : myLabel
 - /src/main/resources/db/script.sql : routing 정보 table / insert 예시
-- com.kdpark.gwconfig.controller.RoutePropertiesRestContoller.java : Routie 정보를 동적으로 추가/수정/삭제 할 수 있게 하는 Rest API
+- com.kdpark.gwconfig.controller.RoutePropertiesRestContoller.java : Route 정보를 동적으로 추가/수정/삭제 할 수 있게 하는 Rest API
