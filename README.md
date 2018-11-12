@@ -13,5 +13,8 @@ Zuul GateWay server + Dynamic Configuration Server
 
 # Configuraion Server
 ## summary
-
-## 주요 
+- Spring cloud config server 구현
+- DB에서 routing 설정정보를 읽어와 동적으로 gateway에 설정을 한다
+## 주요 소스
+- application.yml : config서버 설정, cloud.config.server.jdbc.sql (DB에서 routing 정보를 가져오는 query)
+- /src/main/resources/db/script.sql : routing 정보 table / insert 예시
