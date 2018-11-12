@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.kdpark.gwconfig.mapper.RoutePropertiesMapper">
+ 	<insert id="insertRouteProperties" parameterType="com.kdpark.gwconfig.vo.RoutePropertiesVO">
+		INSERT INTO route_properties
+			(application, profile, label, group_key, group_type, group_value)
+		VALUES
+			('gateway', 'default', 'master', #{groupKey}, #{groupType}, #{groupValue})
+	</insert>
+
+ 	<update id="updateRouteProperties" parameterType="com.kdpark.gwconfig.vo.RoutePropertiesVO">
+ 		UPDATE route_properties SET
+ 			group_value = #{groupValue} 
+ 		WHERE group_key = #{groupKey}
+ 			AND group_type = #{groupType}
+ 	</update>
+
+	<select id="selectRoutePropertiesCnt" parameterType="com.kdpark.gwconfig.vo.RoutePropertiesVO" resultType="int">
+		SELECT COUNT(*) AS totalCnt
+		FROM route_properties
+		WHERE group_key = #{groupKey}
+	</select>
+
+	<delete id="deleteRouteProperties" parameterType="com.kdpark.gwconfig.vo.RoutePropertiesVO">
+		DELETE FROM route_properties
+		WHERE group_key = #{groupKey}
+	</delete>
+
+</mapper>

@@ -12,7 +12,7 @@ CREATE TABLE route_properties (
 
 
 -- insert sample
-INSERT INTO fiveGProperties
+INSERT INTO route_properties
 	(application, profile, label, group_key, group_type, group_value)
 VALUES
 	('gateway', 'default', 'master', 'auth', 'path', '/auth/**'),

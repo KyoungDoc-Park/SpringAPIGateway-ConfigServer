@@ -29,7 +29,7 @@
 	<logger name="jdbc.resultsettable" level="DEBUG"/>
 	<logger name="jdbc.connection" level="OFF"/>
 
-    <logger name="com.kt.fiveg.gateway" level="INFO" additivity="false">
+    <logger name="com.kdpark.gwconfig" level="INFO" additivity="false">
         <appender-ref ref="FILE" />
         <appender-ref ref="STDOUT" />
     </logger>
