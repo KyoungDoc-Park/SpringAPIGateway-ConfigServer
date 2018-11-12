@@ -1,0 +1,39 @@
+spring.profiles: local
+server:
+  port: 8080
+  error: 
+    path: /error
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: gateway
+  redis:
+    host: localhost
+    port: 6379
+    password: null 
+logging.config: classpath:logback-local.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    routes:
+      enabled: true
+    filters:
+      enabled: true
+
+zuul.sensitiveHeaders:
+#zuul:
+#  host:
+#    connect-timeout-millis: 1000
+#    connection-request-timeout-millis: -1
+#    socket-timeout-millis: 5000
+#  routes:
+#    members1:
+#      path: /auth/**
+#      url: http://localhost:7001

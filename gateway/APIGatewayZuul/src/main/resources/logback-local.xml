@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+
+    <property name="logback.base.dir" value="E:/logs" />
+    <property name="max.history" value="30" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date{ISO8601}] [PID:${PID:-}] [TID:%X{Transaction-ID}] [%thread] %-5level: %logger.%M\(%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.base.dir}/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logback.base.dir}/log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${max.history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<logger name="jdbc" level="OFF"/>
+	<logger name="jdbc.sqlonly" level="OFF"/>
+	<logger name="jdbc.sqltiming" level="DEBUG"/>
+	<logger name="jdbc.audit" level="OFF"/>
+	<logger name="jdbc.resultset" level="OFF"/>
+	<logger name="jdbc.resultsettable" level="DEBUG"/>
+	<logger name="jdbc.connection" level="OFF"/>
+
+    <logger name="com.kt.fiveg.gateway" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
