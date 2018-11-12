@@ -1,0 +1,18 @@
+server.port: 8888
+spring:
+  profiles:
+    active: jdbc
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/gwconfig
+    username: 
+    password: 
+
+  cloud:
+    config:
+      server:
+        jdbc:
+          order: 0
+          sql: SELECT 'zuul.routes.'||group_key||'.'||group_type AS key, group_value AS value FROM route_properties WHERE application=? AND profile=? AND label=?
+
+gateway.role-update.url: http://localhost:8080/actuator/refresh
